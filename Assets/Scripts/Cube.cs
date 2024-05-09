@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -7,8 +8,10 @@ public class Cube : MonoBehaviour
     [SerializeField] private float _reductionValueProbability;
     [SerializeField] private float _reductionValueScale;
     [SerializeField] private float _probabilityNewCubes;
+    [SerializeField] private bool _wasCreatedRightNow = false;
 
     public float ProbabilityNewCubes => _probabilityNewCubes;
+    public bool WasCreatedRightNow => _wasCreatedRightNow;
     public Vector3 ScaleValue => transform.localScale;
 
     public void Inisialize(float probabilityNewCubes, Vector3 scaleValue)
@@ -16,10 +19,13 @@ public class Cube : MonoBehaviour
         _probabilityNewCubes = probabilityNewCubes;
         transform.localScale = scaleValue;
 
+        ChangeStateForExplosion();
         ReducingProbability();
         DecreaseScale();
         GenerateNevColor();
     }
+
+    public void ChangeStateForExplosion() => _wasCreatedRightNow=!_wasCreatedRightNow;
 
     private void ReducingProbability() =>
         _probabilityNewCubes /= _reductionValueProbability;

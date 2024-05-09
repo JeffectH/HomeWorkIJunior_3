@@ -159,6 +159,7 @@ MonoBehaviour:
   _reductionValueProbability: 2
   _reductionValueScale: 2
   _probabilityNewCubes: 1
+  _wasCreatedRightNow: 0
 --- !u!54 &141689423
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -441,7 +442,6 @@ MonoBehaviour:
   _expousionRadius: 20
   _expousionForce: 300
   _mainCamera: {fileID: 330585545}
-  _inputValue: 0
 --- !u!4 &367266848
 Transform:
   m_ObjectHideFlags: 0
@@ -724,6 +724,7 @@ MonoBehaviour:
   _reductionValueProbability: 2
   _reductionValueScale: 2
   _probabilityNewCubes: 1
+  _wasCreatedRightNow: 0
 --- !u!1 &478945627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,6 +1019,52 @@ Transform:
   - {fileID: 1468218772}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &998347050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 998347052}
+  - component: {fileID: 998347051}
+  m_Layer: 0
+  m_Name: Input
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &998347051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998347050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7438e1a05eddf24faf6f04e20ca5ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosion: {fileID: 367266847}
+  _inputValue: 0
+--- !u!4 &998347052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998347050}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.0511465, y: -21.637814, z: -5.638752}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1325480938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,6 +1343,7 @@ MonoBehaviour:
   _reductionValueProbability: 2
   _reductionValueScale: 2
   _probabilityNewCubes: 1
+  _wasCreatedRightNow: 0
 --- !u!54 &1634523393
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1445,6 +1493,7 @@ MonoBehaviour:
   _reductionValueProbability: 2
   _reductionValueScale: 2
   _probabilityNewCubes: 1
+  _wasCreatedRightNow: 0
 --- !u!54 &1644275165
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1728,3 +1777,4 @@ SceneRoots:
   - {fileID: 1325480939}
   - {fileID: 1785259121}
   - {fileID: 367266848}
+  - {fileID: 998347052}
