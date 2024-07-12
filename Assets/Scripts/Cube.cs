@@ -1,23 +1,27 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 
 public class Cube : MonoBehaviour
 {
-    public event Action<float, Vector3, Vector3> DestroyCube;
-
-    [SerializeField] private Spawner _spawner;
     [SerializeField] private float _reductionValueProbability;
     [SerializeField] private float _reductionValueScale;
     [SerializeField] private float _probabilityNewCubes;
 
-    public float ProbabilityNewCubes => _probabilityNewCubes;
-    public Vector3 ScaleValue => transform.localScale;
+    private Explosion _explosion;
+    private Spawner _spawner;
 
     private void Awake()
     {
-        _spawner = FindObjectOfType<Spawner>();
+        _explosion = new Explosion();
+        _spawner = new Spawner();
+    }
+
+    private void OnMouseDown()
+    {
+        _explosion.Expode(transform.position);
+        _spawner.Spawn(this, _probabilityNewCubes, transform.position, transform.localScale);
+        Destroy(gameObject);
     }
 
     public void Initialize(float probabilityNewCubes, Vector3 scaleValue)
@@ -38,12 +42,7 @@ public class Cube : MonoBehaviour
 
     private void GenerateNevColor()
     {
-        Color randomColor = UnityEngine.Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        Color randomColor = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
         GetComponent<Renderer>().material.color = randomColor;
-    }
-
-    private void OnDisable()
-    {
-        _spawner.Spawn(ProbabilityNewCubes, transform.position, ScaleValue);
     }
 }

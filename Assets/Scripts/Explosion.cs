@@ -1,33 +1,14 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explosion : MonoBehaviour
+public class Explosion
 {
-    [SerializeField] private float _expousionRadius;
-    [SerializeField] private float _expousionForce;
-    [SerializeField] private Camera _mainCamera;
+    private float _expousionRadius = 20f;
+    private float _expousionForce = 300f;
 
-    public void HittingCube() 
+    public void Expode(Vector3 pointExplode)
     {
-        Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit hit;
-
-        if(Physics.Raycast(ray, out hit) ) 
-        {
-            if (hit.collider.TryGetComponent(out Cube cube)) 
-            {
-                Expode(cube.transform.position);
-
-                Destroy(cube.gameObject);
-            }
-        }
-    }
-
-    private void Expode(Vector3 pointExplode)
-    {
-        foreach (Rigidbody explodableObjects in GetExplousionObjects(pointExplode)) 
+        foreach (Rigidbody explodableObjects in GetExplousionObjects(pointExplode))
         {
             explodableObjects.AddExplosionForce(_expousionForce, pointExplode, _expousionRadius);
         }
