@@ -8,8 +8,6 @@ public class Explosion : MonoBehaviour
     [SerializeField] private float _expousionForce;
     [SerializeField] private Camera _mainCamera;
 
-    public event Action<float,Vector3, Vector3> Expode—ube;
-
     public void HittingCube() 
     {
         Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -20,8 +18,6 @@ public class Explosion : MonoBehaviour
         {
             if (hit.collider.TryGetComponent(out Cube cube)) 
             {
-                Expode—ube?.Invoke(cube.ProbabilityNewCubes, cube.transform.position, cube.ScaleValue);
-
                 Expode(cube.transform.position);
 
                 Destroy(cube.gameObject);
@@ -34,7 +30,6 @@ public class Explosion : MonoBehaviour
         foreach (Rigidbody explodableObjects in GetExplousionObjects(pointExplode)) 
         {
             explodableObjects.AddExplosionForce(_expousionForce, pointExplode, _expousionRadius);
-            explodableObjects.GetComponent<Cube>().ChangeStateForExplosion();
         }
     }
 
@@ -46,7 +41,6 @@ public class Explosion : MonoBehaviour
 
         foreach (Collider hit in hits)
             if (hit.attachedRigidbody != null)
-                if(hit.GetComponent<Cube>().WasCreatedRightNow)
                 cubes.Add(hit.attachedRigidbody);
 
         return cubes;
